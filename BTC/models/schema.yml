@@ -48,6 +48,6 @@ exposures:
       name: Dev Team
       email: dev@example.com
     description: >
-      BTC Whale alert transactions report
+      BTC Whale alert transactions
     depends_on:
       - ref('whale_alter', v=2)
