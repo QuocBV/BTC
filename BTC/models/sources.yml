@@ -14,3 +14,8 @@ sources:
     tables:
       - name: btc
         loaded_at_field: block_timestamp
+  - name: CUSTOMERS
+    database: CUSTOMERS
+    schema: CUSTOMERS
+    tables:
+      - name: CUSTOMER_STATUS

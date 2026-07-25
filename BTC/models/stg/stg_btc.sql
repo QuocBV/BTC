@@ -6,7 +6,7 @@
     )
 }}
 
-select *
+select '{{ invocation_id }}' as invocation_id, *
 from {{ source("btc", "btc") }}
 {% if is_incremental() %}
 
