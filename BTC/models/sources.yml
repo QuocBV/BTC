@@ -4,13 +4,18 @@ sources:
   - name: btc
     database: btc
     schema: btc_schema
-    freshness:
-      warn_after:
-        count: 1
-        period: hour
-      error_after:
-        count: 3
-        period: hour
+    # freshness:
+    #   warn_after:
+    #     count: 1
+    #     period: hour
+    #   error_after:
+    #     count: 3
+    #     period: hour
     tables:
       - name: btc
         loaded_at_field: block_timestamp
+  - name: CUSTOMERS
+    database: CUSTOMERS
+    schema: CUSTOMERS
+    tables:
+      - name: CUSTOMER_STATUS
