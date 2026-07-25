@@ -10,9 +10,13 @@ with
         group by output_address
         order by total_sent desc
     )
+
 select
+    '{{ invocation_id }}' as invocation_id,
     w.output_address,
     w.total_sent,
     w.tx_count,
-    {{ convert_to_usd("total_sent") }} as total_sent_usd
+    {{ convert_to_usd("w.total_sent") }} as total_sent_usd
 from whales w
+
+order by total_sent desc

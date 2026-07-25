@@ -1,10 +1,4 @@
-{{
-    config(
-        materialized="incremental",
-        unique_key="HASH_KEY",
-        incremental_strategy="merge",
-    )
-}}
+{{ config(materialized="incremental", incremental_strategy="append") }}
 with
     flattened_outputs as (
         select
@@ -18,8 +12,7 @@ with
         where
             f.value:address is not null
             {% if is_incremental() %}
-                and tx.block_timestamp
-                >= (select max(tx.block_timestamp) from {{ this }})
+                and tx.block_timestamp > (select max(block_timestamp) from {{ this }})
 
             {% endif %}
     )
