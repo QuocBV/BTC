@@ -9,18 +9,10 @@ with
 
         group by output_address
         order by total_sent desc
-    ),
-
-    latest_price as (
-        select close_price_usd as price
-        from {{ ref("btc_usd_max") }}
-        where to_date(replace(event_date, ' UTC', '')) = current_date()
     )
-
 select
     w.output_address,
     w.total_sent,
     w.tx_count,
-    (p.price * w.total_sent) as total_sent_usd
+    {{ convert_to_usd("total_sent") }} as total_sent_usd
 from whales w
-cross join latest_price p
