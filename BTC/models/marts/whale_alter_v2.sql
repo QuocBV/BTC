@@ -11,4 +11,5 @@ with
         order by total_sent desc
     )
 select w.output_address, w.total_sent, w.tx_count
+
 from whales w
